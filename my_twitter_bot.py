@@ -1,6 +1,10 @@
 import tweepy
 import time
 
+
+##Chaves necessárias para acessar a conta 
+##Keys necessaries to access the account
+
 CONSUMER_KEY = 'ZUeC3IaKYOuU7EPHgpf6nUHR5'
 CONSUMER_SECRET = 'TB6FuDOZzLEVlA98tg5EAK3PmT4qjAG7yAif5zWSGQocOypjfQ'
 ACCESS_KEY = '1092557643288375296-RAig6zvWAtSNxe0DXDFUO3Ht5lbry6'
@@ -11,7 +15,12 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 canalhices_fabricio = 0
+last_seen_id = 0
+
+#File to archive the total of the counter
+#Arquivo para guardar o total do contador
 FILE_NAME = 'qtdcanalhices.txt'
+FILE_NAME2 = 'last_seen_id.txt'
 
 def buscar_canalhices(file_name):
     f_read = open(file_name, 'r')
@@ -28,11 +37,14 @@ def guardar_canalhices(qtd, file_name):
 def reply_to_tweets():
     print('searching for canalhices...')
     canalhices_fabricio = buscar_canalhices(FILE_NAME)
+    last_seen_id = buscar_canalhices(FILE_NAME2)
 
-    mentions = api.mentions_timeline()
+    mentions = api.mentions_timeline(last_seen_id)
 
     for mention in reversed(mentions):
         if '#fabriciocanalha' in mention.text.lower():
+            last_seen_id = mention.id
+            guardar_canalhices(last_seen_id, FILE_NAME2)
             canalhices_fabricio += 1
             guardar_canalhices(canalhices_fabricio, FILE_NAME)
             print('Canalhice computada!')
