@@ -17,7 +17,6 @@ api = tweepy.API(auth)
 canalhices_fabricio = 0
 last_seen_id = 0
 
-
 #File to archive the total of the counter
 #Arquivo para guardar o total do contador
 FILE_NAME = 'qtdcanalhices.txt'
