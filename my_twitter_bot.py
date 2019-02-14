@@ -1,14 +1,14 @@
-import tweepy
+﻿import tweepy
 import time
 
 
 ##Chaves necessárias para acessar a conta 
 ##Keys necessaries to access the account
 
-CONSUMER_KEY = 'ZUeC3IaKYOuU7EPHgpf6nUHR5'
-CONSUMER_SECRET = 'TB6FuDOZzLEVlA98tg5EAK3PmT4qjAG7yAif5zWSGQocOypjfQ'
-ACCESS_KEY = '1092557643288375296-RAig6zvWAtSNxe0DXDFUO3Ht5lbry6'
-ACCESS_SECRET = 'Io2MSSdJlKKDxBxGnNN1sVVBPB7qqRynoMn0FqNmWaLKT'
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
+ACCESS_KEY = ''
+ACCESS_SECRET = ''
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
